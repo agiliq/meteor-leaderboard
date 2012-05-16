@@ -1,0 +1,38 @@
+<head>
+  <title>Indian Companies</title>
+</head>
+
+<body>
+  <div id="outer">
+    <h1>Which Indian company do you like the most?</h1>
+    {{> leaderboard}}
+  </div>
+</body>
+
+<template name="leaderboard">
+  <div class="leaderboard">
+    {{#each companies}}
+      {{> company}}
+    {{/each}}
+  </div>
+
+  {{#if selected_name}}
+  <div class="details">
+    <div class="name">{{selected_name}}</div>
+    <input type="button" class="inc" value="Give 5 points" />
+  </div>
+  {{/if}}
+
+  {{#unless selected_name}}
+  <div class="none">Click a company to select</div>
+  {{/unless}}
+</template>
+
+<template name="company">
+  <div class="company {{selected}}">
+    <span class="name">{{name}}</span>
+    <span class="score">{{score}}</span>
+    <span class="website"><a href="{{website}}">Website</a></span>
+  </div>
+</template>
+
